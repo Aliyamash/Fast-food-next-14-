@@ -66,9 +66,9 @@ export default function Header() {
                       3
                     </span>
                   </a>
-                  <a href="login.html" className="btn-auth">
+                  <Link href="/auth/login" className="btn-auth">
                     ورود
-                  </a>
+                  </Link>
                 </div>
               </div>
             </nav>
