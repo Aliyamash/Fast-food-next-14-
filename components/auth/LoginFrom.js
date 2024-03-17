@@ -6,10 +6,14 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { login } from "@/actions/auth";
 
-export default function LoginForm() {
+export default function LoginForm({ setStep }) {
   const [stateLogin, formActionLogin] = useFormState(login, {});
+  
   useEffect(() => {
     toast(stateLogin?.message, { type: `${stateLogin?.status}` });
+    if (stateLogin?.status === "success") {
+      setStep(2);
+    }
   }, [stateLogin]);
   return (
     <div className="card">
