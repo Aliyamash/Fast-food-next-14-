@@ -28,7 +28,7 @@ export default function ProductCard({ product }) {
          <h5>
             <Link href={`/product/${product.slug}`}>
             {product.name}
-            <i class="bi bi-arrow-up-left-square mx-2 fs-4"></i>
+            <i className="bi bi-arrow-up-left-square mx-2 fs-4"></i>
             </Link>
           </h5>
          

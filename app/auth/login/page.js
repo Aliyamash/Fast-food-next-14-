@@ -1,6 +1,22 @@
-import Link from "next/link";
+"use client"
+
+
+import { useFormState } from "react-dom";
+import SubmitButton from "@/components/SubmitButton";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { login } from "@/actions/auth";
+
 
 export default function LoginPage(){
+
+    const [stateLogin, formActionLogin] = useFormState(login, {});
+useEffect(() => {
+  toast(stateLogin?.message , {type: `${stateLogin?.status}`})
+},[stateLogin])
+
+
+
     return(
         <section className="auth_section book_section">
         <div className="container">
@@ -9,36 +25,12 @@ export default function LoginPage(){
                     <div className="card">
                         <div className="card-body">
                             <div className="form_container">
-                                <form>
-                                    <div className="mb-3">
-                                        <label className="form-label">ایمیل</label>
-                                        <input type="email" className="form-control" />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">رمز عبور</label>
-                                        <input type="password" className="form-control" />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary btn-auth">ورود</button>
-                                </form>
-                            </div>
-
-                            <h6 className="mt-4">حساب ندارید ؟ 
-                                <Link href="/auth/register" style={{color: "#e69c00"}}> ثبت نام کنید </Link>
-                            </h6>
-                        </div>
-                    </div>
-
-                    <hr />
-
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="form_container">
-                                <form>
+                                <form action={formActionLogin} >
                                     <div className="mb-3">
                                         <label className="form-label">شماره موبایل</label>
-                                        <input type="text" className="form-control" />
+                                        <input name="cellphone" type="text" className="form-control" />
                                     </div>
-                                    <button type="submit" className="btn btn-primary btn-auth">ورود</button>
+                                    <SubmitButton title="ورود" style="btn btn-primary btn-auth" />
                                 </form>
                             </div>
                         </div>

@@ -12,12 +12,6 @@ export default function Form() {
   const [state, formAction] = useFormState(create, {});
   useEffect(() => {
     toast(state?.message , {type: `${state?.status}`})
-
-    // if(state?.status === 'error'){
-    //     toast.error(state.message)
-    // } else {
-    //   toast.success(state.message)
-    // }
   },[state])
   return (
     <form action={formAction}>
