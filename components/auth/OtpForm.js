@@ -15,7 +15,7 @@ export default function OtpForm() {
   return (
     <div className="card-body">
       <div className="form_container">
-        <form>
+        <form action={formActionLogin}>
           <div className="mb-3">
             <label className="form-label">کد تایید</label>
             <input name="otp" type="text" className="form-control" />
