@@ -1,11 +1,14 @@
 "use client";
 
+import AuthContext from "@/context/AuthContext";
 import imageHero from "@/public/image/hero-bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useContext } from "react";
 
 export default function Header() {
+const {user} = useContext(AuthContext)
   const pathname = usePathname();
   return (
     <div className={pathname === "/" ? "" : "sub_page"}>
@@ -66,9 +69,15 @@ export default function Header() {
                       3
                     </span>
                   </a>
+                 {user ? (
+                   <Link href="/profile" className="btn-auth">
+                  پروفایل
+                 </Link>
+                 ) : (
                   <Link href="/auth/login" className="btn-auth">
-                    ورود
-                  </Link>
+                  ورود
+                </Link>
+                 )}
                 </div>
               </div>
             </nav>

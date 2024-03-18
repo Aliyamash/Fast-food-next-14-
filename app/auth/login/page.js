@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 export default function LoginPage() {
-    const [step , setStep] = useState(2)
+    const [step , setStep] = useState(1)
   return (
     <section className="auth_section book_section">
       <div className="container">

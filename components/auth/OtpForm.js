@@ -2,15 +2,21 @@
 
 import { useFormState } from "react-dom";
 import SubmitButton from "@/components/SubmitButton";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { chekOtp } from "@/actions/auth";
+import AuthContext from "@/context/AuthContext";
+import { redirect } from "next/navigation";
 
 
 export default function OtpForm() {
+   const {LoginContext} = useContext(AuthContext)
   const [stateOtp, formActionLogin] = useFormState(chekOtp, {});
   useEffect(() => {
     toast(stateOtp?.message, { type: `${stateOtp?.status}` });
+    if(stateOtp?.status === 'success'){
+      LoginContext(stateOtp.user)
+    }
   }, [stateOtp]);
   return (
     <div className="card-body">

@@ -1,23 +1,28 @@
 import Header from "@/components/layout/Header";
 import "./globals.css";
 import BootstrapClient from "@/components/libraries/Bootstrap";
-import Toastify from '@/components/libraries/Toastify'
+import Toastify from "@/components/libraries/Toastify";
 import Footer from "@/components/layout/Footer";
 import NextNprogress from "@/components/libraries/NextNprogress";
+import { AuthProvider } from "@/context/AuthContext";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="rtl">
       <body>
-        <NextNprogress> 
+       <AuthProvider>
 
-        <Header />
-        {children}
-        <Footer/>
-        <BootstrapClient/>
-        <Toastify/>
-      
-        </NextNprogress>
-        </body>
+          <NextNprogress>
+            <Header />
+            {children}
+
+            <Footer />
+            <BootstrapClient />
+            <Toastify />
+          </NextNprogress>
+</AuthProvider>
+        
+      </body>
     </html>
   );
 }
