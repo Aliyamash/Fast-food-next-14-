@@ -10,8 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="rtl">
       <body>
-       <AuthProvider>
-
+        <AuthProvider>
           <NextNprogress>
             <Header />
             {children}
@@ -20,8 +19,7 @@ export default function RootLayout({ children }) {
             <BootstrapClient />
             <Toastify />
           </NextNprogress>
-</AuthProvider>
-        
+        </AuthProvider>
       </body>
     </html>
   );
